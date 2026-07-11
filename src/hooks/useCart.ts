@@ -1,24 +1,19 @@
 import { useDispatch, useSelector } from "react-redux";
 
 import type { RootState, AppDispatch } from "@/store";
-
 import {
-  addToCart,
+  addToCart as addToCartAction,
   removeFromCart,
   updateQuantity,
-  clearCart
+  clearCart,
 } from "@/store/cartSlice";
 
 import type { Product } from "@/types";
 
-
 export const useCart = () => {
   const dispatch = useDispatch<AppDispatch>();
 
-  const cart = useSelector(
-    (state: RootState) => state.cart
-  );
-
+  const cart = useSelector((state: RootState) => state.cart);
 
   const addItem = (
     product: Product,
@@ -27,24 +22,21 @@ export const useCart = () => {
     size?: string
   ) => {
     dispatch(
-      addToCart({
+      addToCartAction({
         product,
         quantity,
         selectedColor: color,
-        selectedSize: size
+        selectedSize: size,
       })
     );
   };
 
+  // للتوافق مع الصفحات القديمة
+  const addToCart = addItem;
 
-  const removeItem = (
-    productId: number
-  ) => {
-    dispatch(
-      removeFromCart(productId)
-    );
+  const removeItem = (productId: number) => {
+    dispatch(removeFromCart(productId));
   };
-
 
   const updateItemQuantity = (
     productId: number,
@@ -53,28 +45,27 @@ export const useCart = () => {
     dispatch(
       updateQuantity({
         productId,
-        quantity
+        quantity,
       })
     );
   };
-
 
   const clear = () => {
     dispatch(clearCart());
   };
 
-
   return {
     cart,
-
     items: cart.items,
     totalItems: cart.totalItems,
     subtotal: cart.subtotal,
     total: cart.total,
 
     addItem,
+    addToCart,
+
     removeItem,
     updateItemQuantity,
-    clear
+    clear,
   };
 };
