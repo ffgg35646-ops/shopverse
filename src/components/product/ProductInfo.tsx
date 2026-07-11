@@ -1,6 +1,6 @@
 import { Truck, ShieldCheck, RotateCcw } from "lucide-react";
 
-import type { Product } from "@/types";
+import type { Product, Review } from "@/types";
 
 import Rating from "@/components/ui/Rating";
 import Badge from "@/components/ui/Badge";
@@ -13,12 +13,14 @@ import { useState } from "react";
 
 interface ProductInfoProps {
   product: Product;
+  reviews?: Review[];
   onAddToCart?: (product: Product, quantity: number) => void;
 }
 
 
 const ProductInfo = ({
   product,
+  reviews,
   onAddToCart
 }: ProductInfoProps) => {
 
@@ -135,35 +137,26 @@ const ProductInfo = ({
       <div className="space-y-4 rounded-xl border p-5">
 
         <div className="flex items-center gap-3">
-
           <Truck size={20} />
-
           <span>
             Free shipping on orders over $100
           </span>
-
         </div>
 
 
         <div className="flex items-center gap-3">
-
           <ShieldCheck size={20} />
-
           <span>
             Secure payment and buyer protection
           </span>
-
         </div>
 
 
         <div className="flex items-center gap-3">
-
           <RotateCcw size={20} />
-
           <span>
             30-day return policy
           </span>
-
         </div>
 
       </div>
