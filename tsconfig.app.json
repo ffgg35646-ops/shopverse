@@ -3,10 +3,17 @@
     "target": "ES2022",
     "useDefineForClassFields": true,
     "lib": ["ES2022", "DOM", "DOM.Iterable"],
-    "module": "ESNext",
-    "skipLibCheck": true,
 
+    "module": "ESNext",
     "moduleResolution": "Bundler",
+
+    "baseUrl": ".",
+
+    "paths": {
+      "@/*": ["src/*"]
+    },
+
+    "skipLibCheck": true,
     "allowImportingTsExtensions": false,
     "resolveJsonModule": true,
     "isolatedModules": true,
@@ -20,5 +27,6 @@
     "noFallthroughCasesInSwitch": true,
     "noUncheckedSideEffectImports": true
   },
+
   "include": ["src"]
 }
