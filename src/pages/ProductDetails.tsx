@@ -78,6 +78,7 @@ const ProductDetails = () => {
 
           <ProductInfo
             product={product}
+            reviews={productReviews}
             onAddToCart={handleAddToCart}
           />
 
