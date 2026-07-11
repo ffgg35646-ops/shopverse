@@ -13,7 +13,7 @@ import { useState } from "react";
 
 interface ProductInfoProps {
   product: Product;
-  reviews?: Review[];
+  reviews: Review[];
   onAddToCart?: (product: Product, quantity: number) => void;
 }
 
@@ -33,6 +33,7 @@ const ProductInfo = ({
     ? product.price -
       (product.price * product.discountPercentage) / 100
     : product.price;
+
 
   return (
 
