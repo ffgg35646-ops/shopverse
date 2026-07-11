@@ -1,100 +1,62 @@
 import type {
-  ButtonHTMLAttributes,
-  ReactNode
+  InputHTMLAttributes
 } from "react";
 
+interface InputProps
+  extends InputHTMLAttributes<HTMLInputElement> {
 
-interface ButtonProps
-  extends ButtonHTMLAttributes<HTMLButtonElement> {
+  label?: string;
 
-  children: ReactNode;
-
-  variant?: 
-    | "primary"
-    | "secondary"
-    | "outline"
-    | "danger";
-
-  size?:
-    | "sm"
-    | "md"
-    | "lg";
-
-  fullWidth?: boolean;
+  error?: string;
 }
 
-
-
-const Button = ({
-  children,
-  variant = "primary",
-  size = "md",
-  fullWidth = false,
+const Input = ({
+  label,
+  error,
   className = "",
   ...props
-}: ButtonProps) => {
-
-
-
-  const variants = {
-
-    primary:
-      "bg-black text-white hover:bg-gray-800",
-
-    secondary:
-      "bg-gray-200 text-gray-900 hover:bg-gray-300",
-
-    outline:
-      "border border-gray-300 text-gray-900 hover:bg-gray-100",
-
-    danger:
-      "bg-red-600 text-white hover:bg-red-700"
-
-  };
-
-
-
-  const sizes = {
-
-    sm:
-      "px-3 py-1.5 text-sm",
-
-    md:
-      "px-5 py-2.5",
-
-    lg:
-      "px-7 py-3 text-lg"
-
-  };
-
-
+}: InputProps) => {
 
   return (
 
-    <button
+    <div className="w-full">
 
-      className={`
-        rounded-lg
-        font-medium
-        transition
-        duration-200
-        ${variants[variant]}
-        ${sizes[size]}
-        ${fullWidth ? "w-full" : ""}
-        ${className}
-      `}
+      {label && (
+        <label className="mb-2 block text-sm font-medium text-gray-700">
+          {label}
+        </label>
+      )}
 
-      {...props}
+      <input
+        className={`
+          w-full
+          rounded-lg
+          border
+          border-gray-300
+          bg-white
+          px-4
+          py-3
+          outline-none
+          transition
+          focus:border-black
+          focus:ring-1
+          focus:ring-black
+          ${error ? "border-red-500" : ""}
+          ${className}
+        `}
+        {...props}
+      />
 
-    >
+      {error && (
+        <p className="mt-1 text-sm text-red-500">
+          {error}
+        </p>
+      )}
 
-      {children}
-
-    </button>
+    </div>
 
   );
 
 };
 
-
-export default Button;
+export default Input;
