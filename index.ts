@@ -1,31 +1,18 @@
-import { configureStore } from "@reduxjs/toolkit";
-
-import cartReducer from "./cartSlice";
-import productReducer from "./productSlice";
-import userReducer from "./userSlice";
-import wishlistReducer from "./wishlistSlice";
-import orderReducer from "./orderSlice";
-
-
-export const store = configureStore({
-  reducer: {
-    cart: cartReducer,
-    products: productReducer,
-    user: userReducer,
-    wishlist: wishlistReducer,
-    orders: orderReducer
+export const navigation = [
+  {
+    name: "Home",
+    path: "/"
   },
-
-  middleware: (getDefaultMiddleware) =>
-    getDefaultMiddleware({
-      serializableCheck: false
-    })
-});
-
-
-export type RootState = ReturnType<
-  typeof store.getState
->;
-
-
-export type AppDispatch = typeof store.dispatch;
+  {
+    name: "Shop",
+    path: "/shop"
+  },
+  {
+    name: "About",
+    path: "/about"
+  },
+  {
+    name: "Contact",
+    path: "/contact"
+  }
+];
