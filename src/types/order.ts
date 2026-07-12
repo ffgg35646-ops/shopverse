@@ -25,6 +25,13 @@ export interface ShippingAddress {
   postalCode: string;
 }
 
+export type OrderStatus =
+  | "Pending"
+  | "Processing"
+  | "Shipped"
+  | "Delivered"
+  | "Cancelled";
+
 export interface Order {
   id: number;
   orderNumber: string;
@@ -40,23 +47,19 @@ export interface Order {
   tax: number;
   total: number;
 
-  paymentMethod: "Credit Card" | "PayPal" | "Cash on Delivery";
+  paymentMethod:
+    | "Credit Card"
+    | "PayPal"
+    | "Cash on Delivery";
 
-  paymentStatus: "Pending" | "Paid" | "Failed";
-
-  status:
+  paymentStatus:
     | "Pending"
-    | "Processing"
-    | "Shipped"
-    | "Delivered"
-    | "Cancelled";
+    | "Paid"
+    | "Failed";
 
-  orderStatus:
-    | "Pending"
-    | "Processing"
-    | "Shipped"
-    | "Delivered"
-    | "Cancelled";
+  status: OrderStatus;
+
+  orderStatus: OrderStatus;
 
   createdAt: string;
   updatedAt: string;
