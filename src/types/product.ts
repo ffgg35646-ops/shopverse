@@ -14,6 +14,7 @@ export interface Product {
   price: number;
   originalPrice?: number;
   discount?: number;
+  discountPercentage?: number;
 
   currency: string;
 
@@ -35,6 +36,8 @@ export interface Product {
   newArrival: boolean;
   bestSeller: boolean;
   onSale: boolean;
+
+  inStock?: boolean;
 
   reviews: Review[];
 
