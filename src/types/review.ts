@@ -1,6 +1,8 @@
 export interface Review {
   id: number;
 
+  productId: number;
+
   userName: string;
   userAvatar: string;
 
@@ -13,5 +15,6 @@ export interface Review {
 
   likes: number;
 
+  date: string;
   createdAt: string;
 }
