@@ -44,6 +44,13 @@ export interface Order {
 
   paymentStatus: "Pending" | "Paid" | "Failed";
 
+  status:
+    | "Pending"
+    | "Processing"
+    | "Shipped"
+    | "Delivered"
+    | "Cancelled";
+
   orderStatus:
     | "Pending"
     | "Processing"
