@@ -1,0 +1,17 @@
+export interface Category {
+  id: number;
+
+  name: string;
+  slug: string;
+
+  image: string;
+
+  description?: string;
+
+  productCount?: number;
+
+  featured?: boolean;
+
+  createdAt?: string;
+  updatedAt?: string;
+}
