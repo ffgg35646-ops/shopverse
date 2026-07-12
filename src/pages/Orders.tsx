@@ -7,11 +7,14 @@ import Badge from "@/components/ui/Badge";
 
 import { useAppSelector } from "@/store";
 
+import type { RootState } from "@/store";
+import type { Order } from "@/types";
+
 
 const Orders = () => {
 
   const { orders } = useAppSelector(
-    (state) => state.order
+    (state: RootState) => state.order
   );
 
 
@@ -44,7 +47,7 @@ const Orders = () => {
 
           <div className="space-y-6">
 
-            {orders.map((order) => (
+            {orders.map((order: Order) => (
 
               <div
                 key={order.id}
